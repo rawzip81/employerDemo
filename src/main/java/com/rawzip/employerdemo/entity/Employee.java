@@ -28,6 +28,8 @@ public class Employee {
     private String dob;
     @Column
     private String hire_date;
+    @Column
+    private Long ph_number;
 
 
 

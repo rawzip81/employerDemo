@@ -4,6 +4,8 @@ import com.rawzip.employerdemo.entity.Department;
 import com.rawzip.employerdemo.service.DepartmentService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/departments")
 public class DepartmentController {
@@ -14,21 +16,23 @@ public DepartmentController(DepartmentService departmentService){
 }
 
 @GetMapping
-    public void GetDepartment(){
+    public List<Department> getDepartment(Department department){
+    return departmentService.getDepartment(department);
 
 }
 @PostMapping
-    public void InsertDepartment(@RequestBody Department department){
+    public void insertDepartment(@RequestBody List<Department> department){
     departmentService.InsertDepartment(department);
 
 }
-@DeleteMapping
-    public void DeleteDepartmentById(@RequestParam (value = "department_id") Long department_id){
+@DeleteMapping("/delete")
+    public void deleteDepartmentById(@RequestParam (value = "id") Long department_id){
     departmentService.DeleteDepartmentById(department_id);
 
 }
-@PutMapping
-    public void UpdateDepartment(){
-
+@PutMapping("/update")
+    public void updateDepartment(@RequestParam (value = "id") Long department_id,
+                                 @RequestBody Department department){
+    departmentService.updateDepartment(department);
 }
 }

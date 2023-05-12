@@ -23,8 +23,8 @@ public class AddressService {
         addressRepository.deleteById(addressId);
     }
 
-    public void updateAddressById(Long addressId) {
-        //addressRepository.save(addressId);
+    public void updateAddressById(Address address) {
+        addressRepository.save(address);
     }
 
     public List<Address> getAllAddresses() {

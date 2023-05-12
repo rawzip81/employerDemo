@@ -4,6 +4,8 @@ import com.rawzip.employerdemo.entity.Department;
 import com.rawzip.employerdemo.repository.DepartmentRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DepartmentService {
     private DepartmentRepository departmentRepository;
@@ -12,11 +14,19 @@ public class DepartmentService {
         this.departmentRepository = departmentRepository;
     }
 
-    public void InsertDepartment(Department department) {
-        //this.departmentRepository.save(department);
+    public void InsertDepartment(List<Department> department) {
+        this.departmentRepository.saveAll(department);
     }
 
     public void DeleteDepartmentById(Long departmentId) {
-        //this.departmentRepository.save(departmentId);
+        this.departmentRepository.deleteById(departmentId);
+    }
+
+    public List<Department> getDepartment(Department department) {
+        return departmentRepository.findAll();
+    }
+
+    public void updateDepartment(Department department) {
+        departmentRepository.save(department);
     }
 }

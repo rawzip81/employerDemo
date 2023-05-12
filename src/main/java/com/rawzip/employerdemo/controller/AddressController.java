@@ -18,7 +18,7 @@ public class AddressController {
     public List<Address> getAddress(){
       return  addressService.getAllAddresses();
     }
-    @GetMapping("/id")
+    @GetMapping("/view")
     public Optional<Address> getAddressById(@RequestParam (value = "id", required = false ) Long address_id){
      return addressService.getAddressById(address_id);
     }
@@ -30,9 +30,8 @@ public class AddressController {
     public void deleteAddressById(@RequestParam (value = "id") Long address_id){
         addressService.deleteAddressById(address_id);
     }
-    @PutMapping
-    public void updateAddress(@RequestParam (value = "id") Long address_id){
-        addressService.updateAddressById(address_id);
-
+    @PutMapping("/update")
+    public void updateAddress(@RequestParam (value = "id") Long address_id, @RequestBody Address address){
+        addressService.updateAddressById(address);
     }
 }
