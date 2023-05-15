@@ -1,6 +1,13 @@
 package com.rawzip.employerdemo.entity;
 
-public class Account {
+import lombok.*;
 
-    private String routingNumber;
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+public class Account {
+    private Long routingNumber;
+    private Long employeeAccountNumber;
 }
