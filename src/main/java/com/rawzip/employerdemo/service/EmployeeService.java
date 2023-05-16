@@ -3,6 +3,7 @@ package com.rawzip.employerdemo.service;
 import com.rawzip.employerdemo.entity.Employee;
 import com.rawzip.employerdemo.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,5 +23,9 @@ public class EmployeeService {
 
     public void deleteEmployeeById(Long id) {
         employeeRepository.deleteById(id);
+    }
+
+    public Employee updateEmployeeDetailsById(Employee employee) {
+       return employeeRepository.save(employee);
     }
 }
