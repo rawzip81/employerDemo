@@ -4,6 +4,8 @@ package com.rawzip.employerdemo.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
+
 @Setter
 @Getter
 @ToString
@@ -21,15 +23,15 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_sequence")
     private Long id;
     @Column
-    private String first_name;
+    private String firstName;
     @Column
-    private String last_name;
+    private String lastName;
     @Column
     private String dob;
     @Column
-    private String hire_date;
+    private String hireDate;
     @Column
-    private Long ph_number;
+    private Long phoneNumber;
 
 
 
