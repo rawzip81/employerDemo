@@ -20,13 +20,18 @@ public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
     //or we can create a constructor and do it in another way without using @Autowired
-    public EmployeeController(EmployeeService employeeService){
-        this.employeeService=employeeService;
+//    public EmployeeController(EmployeeService employeeService){
+//        this.employeeService=employeeService;
+//    }
+    @GetMapping("/lastNames/{lastName}")
+    public List<Employee> getEmployeeDetails(@PathVariable("lastName") String lastName ){
+        return employeeService.getEmployeeDetails(lastName);
     }
     @GetMapping
     public List<Employee> getEmployeeDetails(){
         return employeeService.getEmployeeDetails();
     }
+
     @GetMapping("/{id}")
     public Optional<Employee> getEmployeeById(@PathVariable("id") Long id){
         return employeeService.getEmployeeById(id);
@@ -45,7 +50,7 @@ public class EmployeeController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<Employee> updateEmployeeById(@PathVariable("id") Long id, @RequestBody Employee employee){
-        Optional<Employee> employeeData = employeeRepository.findById(id);
+        Optional<Employee> employeeData = employeeService.getEmployeeById(id);
         if (employeeData.isPresent()) {
             return new ResponseEntity(employeeService.updateEmployeeById(employee), HttpStatus.OK);
            }

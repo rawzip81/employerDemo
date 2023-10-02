@@ -14,6 +14,9 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    public List<Employee> getEmployeeDetails(String lastName) {
+        return employeeRepository.findByLastName(lastName);
+    }
     public List<Employee> getEmployeeDetails() {
         return employeeRepository.findAll();
     }
@@ -36,5 +39,6 @@ public class EmployeeService {
     public Optional<Employee> getEmployeeById(Long id) {
         return employeeRepository.findById(id);
     }
+
 
 }

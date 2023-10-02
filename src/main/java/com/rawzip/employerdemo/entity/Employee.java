@@ -4,7 +4,9 @@ package com.rawzip.employerdemo.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Setter
 @Getter
@@ -32,8 +34,9 @@ public class Employee {
     private String hireDate;
     @Column
     private Long phoneNumber;
-
-
+@OneToMany(cascade = CascadeType.ALL)
+@JoinColumn(name = "EmployeeId", referencedColumnName = "id")
+    private List<Address> address;
 
 
 }
